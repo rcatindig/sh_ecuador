@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Hash;
+use App\Helpers\Common;
 
 class PrepaidCardController extends Controller
 {
@@ -75,7 +76,7 @@ class PrepaidCardController extends Controller
         $batchId = $batch->id;
         for($i=0; $i<$quantity; $i++) {
           $prepaidCard = new \App\Models\PrepaidCard;
-          $prepaidCard->voucher_code = md5(uniqid(rand(), true));
+          $prepaidCard->voucher_code = Common::voucher_code_string();
           $prepaidCard->password = "";
           $prepaidCard->expiry_date = $shelflife;
           $prepaidCard->value = 0;
