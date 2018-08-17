@@ -25,7 +25,8 @@
       </div>
       <form method="post" action="{{url('prepaidcards/generate')}}" enctype="multipart/form-data">
         <div class="card-body">
-          @csrf
+          <!-- @csrf -->
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <!-- <input name="_method" type="hidden" value="PUT"> -->
           <div class="form-group row">
             <label for="service_provider_id" class="col-2 col-form-label">Service Provider</label>
@@ -99,18 +100,18 @@
           </thead>
           <tbody>
 
-            @foreach($prepaidCards as $prov)
+            @foreach($prepaidCards as $key =>  $prov)
             <tr>
-              <td>{{$prov['id']}}</td>
-              <td>{{$prov['batch_id']}}</td>
-              <td>{{$prov['voucher_code']}}</td>
-              <td>{{$prov['expiry_date']}}</td>
-              <td>{{$prov['value']}}</td>
-              <td>{{$prov['serviceProvider']['name']}}</td>
+              <td>{{$prov->id}}</td>
+              <td>{{$prov->batch_id}}</td>
+              <td>{{$prov->voucher_code}}</td>
+              <td>{{$prov->expiry_date}}</td>
+              <td>{{$prov->value}}</td>
+              <td>{{$prov->serviceProvider->name}}</td>
 
               <td>
-                <a class="btn btn-warning btn-create-modal" data-toggle="modal"  data-post="data-php" data-action="edit" data-id="{{$prov['id']}}" data-page="prepaidcards" data-title="Prepaid Card">Edit</a>
-                <a href="{{action('PrepaidCardController@destroy', $prov['id'])}}" class="btn btn-danger">Delete</a>
+                <a class="btn btn-warning btn-create-modal" data-toggle="modal"  data-post="data-php" data-action="edit" data-id="{{$prov->id}}" data-page="prepaidcards" data-title="Prepaid Card">Edit</a>
+                <a href="{{action('PrepaidCardController@destroy', $prov->id)}}" class="btn btn-danger">Delete</a>
               </td>
             </tr>
             @endforeach

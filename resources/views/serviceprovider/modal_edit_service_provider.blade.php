@@ -7,7 +7,7 @@
 <form method="post" action="{{action('ServiceProviderController@update', $id)}}" enctype="multipart/form-data">
 <div class="modal-body">
 
-    @csrf
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input name="_method" type="hidden" value="PATCH">
     <div class="row">
       <div class="col-md-12"></div>

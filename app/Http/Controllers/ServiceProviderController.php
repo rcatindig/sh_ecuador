@@ -15,7 +15,7 @@ class ServiceProviderController extends Controller
     public function index()
     {
         $serviceProviders = \App\Models\ServiceProvider::all();
-        return view('serviceprovider.list', compact('serviceProviders'));
+        return view('serviceprovider.index', compact('serviceProviders'));
     }
 
     /**

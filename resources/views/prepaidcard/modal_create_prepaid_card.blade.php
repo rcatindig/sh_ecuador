@@ -7,7 +7,8 @@
 <form method="post" action="{{url('prepaidcards')}}" enctype="multipart/form-data">
 <div class="modal-body">
 
-    @csrf
+    <!-- @csrf -->
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
       <div class="col-md-12"></div>
       <div class="form-group col-md-12">

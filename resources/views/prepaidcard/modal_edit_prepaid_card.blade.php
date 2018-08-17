@@ -7,7 +7,8 @@
 <form method="post" action="{{action('PrepaidCardController@update', $id)}}"  >
 <div class="modal-body">
 
-    @csrf
+    <!-- @csrf -->
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input name="_method" type="hidden" value="PATCH">
     <div class="row">
       <div class="col-md-12"></div>

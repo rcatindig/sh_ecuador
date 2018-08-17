@@ -17,7 +17,8 @@ class PrepaidCardController extends Controller
     {
       $serviceProviders = \App\Models\ServiceProvider::all();
       $prepaidCards = \App\Models\PrepaidCard::all();
-      return view('prepaidcard.prepaid_cards', compact('prepaidCards','serviceProviders'));
+      // return view('prepaidcard.prepaid_cards', compact('prepaidCards','serviceProviders'))->with('success', 'testings');
+      return view('prepaidcard.index',compact('prepaidCards','serviceProviders'));
     }
 
     /**
@@ -49,7 +50,8 @@ class PrepaidCardController extends Controller
 
       $prepaidCard->save();
 
-      return redirect('prepaidcards')->with('success', 'Information has been added');
+      //return redirect('prepaidcards')->with('success', 'Information has been added');
+      return redirect()->route('prepaidcards')->with('success', 'Information has been added!');
     }
 
     /**
@@ -86,6 +88,7 @@ class PrepaidCardController extends Controller
 
           $prepaidCard->save();
         }
+        // return redirect('prepaidcards')->with('success', 'Prepaid cards are generated Please see Batch-' . $batchId);
         return redirect('prepaidcards')->with('success', 'Prepaid cards are generated Please see Batch-' . $batchId);
       }
 
@@ -137,7 +140,8 @@ class PrepaidCardController extends Controller
       $prepaidCard->redemption_status = $request->get('redemption_status');
       $prepaidCard->save();
 
-      return redirect('prepaidcards')->with('success', 'Information has been updated');
+      // return redirect('prepaidcards')->with('success', 'Information has been updated');
+      return redirect()->route('prepaidcards')->with('success', 'Information has been updated!');
     }
 
     /**
